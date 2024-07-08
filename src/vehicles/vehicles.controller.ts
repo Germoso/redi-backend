@@ -19,26 +19,26 @@ export class VehiclesController {
 
   @Post()
   create(@Body() createVehicleDto: CreateVehicleDto) {
-    return this.vehiclesService.create(createVehicleDto);
+    return this.vehiclesService.createVehicle(createVehicleDto);
   }
 
   @Get()
   findAll() {
-    return this.vehiclesService.findAll();
+    return this.vehiclesService.findAllVehicles();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vehiclesService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.vehiclesService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVehicleDto: UpdateVehicleDto) {
-    return this.vehiclesService.update(+id, updateVehicleDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateVehicleDto: UpdateVehicleDto) {
+  //   return this.vehiclesService.update(+id, updateVehicleDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vehiclesService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.vehiclesService.remove(+id);
+  // }
 }

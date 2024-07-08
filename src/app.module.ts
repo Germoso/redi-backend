@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { VehicleBrandModule } from './vehicles/vehicle-brand/vehicle-brand.module';
-import { EngineTypeModule } from './vehicles/engine-type/engine-type.module';
 import { FuelTypeModule } from './vehicles/fuel-type/fuel-type.module';
-import { VehicleTypeModule } from './vehicles/vehicle-type/vehicle-type.module';
 import { VehicleUsageTypeModule } from './vehicles/vehicle-usage-type/vehicle-usage-type.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
-import { UsuariosModule } from './usuarios/usuarios.module';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
+    MongooseModule.forRoot(
+      'mongodb://root:example@mongo:27017/test?authSource=admin&authMechanism=SCRAM-SHA-1',
+    ),
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mongodb', // Tipo de base de datos
       host: 'mongo', // Host donde está corriendo MongoDB
@@ -27,11 +31,9 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     }),
     FuelTypeModule,
     VehicleBrandModule,
-    EngineTypeModule,
-    VehicleTypeModule,
     VehicleUsageTypeModule,
     VehiclesModule,
-    UsuariosModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
