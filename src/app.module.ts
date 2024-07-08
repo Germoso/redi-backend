@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { VehicleBrandModule } from './vehicles/vehicle-brand/vehicle-brand.module';
 import { FuelTypeModule } from './vehicles/fuel-type/fuel-type.module';
 import { VehicleUsageTypeModule } from './vehicles/vehicle-usage-type/vehicle-usage-type.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+
+import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -30,10 +31,10 @@ import { UsersModule } from './users/users.module';
       autoLoadEntities: true,
     }),
     FuelTypeModule,
-    VehicleBrandModule,
     VehicleUsageTypeModule,
     VehiclesModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
